@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Developer Skills & Editor Setup</title>
+  </head>
+  <body>
+    <div class="flex-col">
+      <h1>Custom Calculator</h1>
+      <div class="conatiner">
+        <div class="input">
+          <input placeholder="0" id="calcInput" />
+        </div>
+        <div class="numbers-container">
+          <div class="numbers-col-left">
+            <div class="numbers-row">
+              <button id="7" class="nmbr-btn" value="7">7</button>
+              <button id="8" class="nmbr-btn" value="8">8</button>
+              <button id="9" class="nmbr-btn" value="9">9</button>
+            </div>
+            <div class="numbers-row">
+              <button id="4" class="nmbr-btn">4</button>
+              <button id="5" class="nmbr-btn">5</button>
+              <button id="6" class="nmbr-btn">6</button>
+            </div>
+            <div class="numbers-row">
+              <button id="1" class="nmbr-btn">1</button>
+              <button id="2" class="nmbr-btn">2</button>
+              <button id="3" class="nmbr-btn">3</button>
+            </div>
+            <div class="numbers-row">
+              <button id="0" class="nmbr-btn">0</button>
+              <button id="0" class="nmbr-btn">00</button>
+              <button id="." class="nmbr-btn">.</button>
+            </div>
+          </div>
+
+          <div class="numbers-col-right">
+            <div class="numbers-row">
+              <button class="nmbr-btn">%</button>
+              <button class="action-btn">></button>
+            </div>
+            <div class="numbers-row">
+              <button class="nmbr-btn" id="plus">+</button>
+              <button class="nmbr-btn">÷</button>
+            </div>
+            <div class="numbers-row last-row">
+              <button class="nmbr-btn">*</button>
+              <button class="action-btn orange-btn">=</button>
+            </div>
+            <div class="numbers-row">
+              <button class="nmbr-btn">-</button>
+              <button class="action-btn" onclick="clearInput()">CL</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
