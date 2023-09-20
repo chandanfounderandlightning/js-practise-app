@@ -6,11 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Hello, world!</title>
   </head>
-  <body>
-    <div>
-      <input />
-      <button>Click on me!</button>
-      <h1></h1>
+  <body
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 20px);
+    "
+  >
+    <div style="display: flex; flex-direction: column">
+      <div>
+        <div
+          class="watch-show"
+          id="watch"
+          style="text-align: center; margin-bottom: 20px"
+        >
+          <span class="minute">00</span>
+          <span>:</span>
+          <span class="seconds">00</span>
+          <span>:</span>
+          <span class="miliseconds">00</span>
+        </div>
+      </div>
+      <div>
+        <button class="btn start" style="margin-right: 20px">Start</button>
+        <button class="btn pause" style="margin-right: 20px">Pause</button>
+        <button class="btn restart">Restart</button>
+      </div>
     </div>
     <div id="name"></div>
   </body>
@@ -593,18 +615,18 @@
     //   }
     // }
 
-    const article =
-      "my name is vishal. my age is 32. i am software eng.i am from mohali";
+    // const article =
+    //   "my name is vishal. my age is 32. i am software eng.i am from mohali";
 
-    let words = article.split(".");
+    // let words = article.split(".");
 
-    for (let i = 0; i < words.length; i++) {
-      document.write(
-        words[i].trim().charAt(0).toUpperCase() +
-          words[i].trim().slice(1) +
-          ". "
-      );
-    }
+    // for (let i = 0; i < words.length; i++) {
+    //   document.write(
+    //     words[i].trim().slice(0, 1).toUpperCase() +
+    //       words[i].trim().slice(1) +
+    //       ". "
+    //   );
+    // }
 
     // for (let i = 0; i < words.length; i++) {
     //   if (words[i].indexOf("-") < 0) {
@@ -616,10 +638,161 @@
     //     document.write(splitArray[j] + "</br>");
     //   }
     // }
+
+    // Date methods
+
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const dayNames = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+
+    const getMonth = new Date().getMonth();
+    const getDate = new Date().getDate();
+    const getYear = new Date(2037, 10, 19, 15, 23).setFullYear(2030);
+    const getDay = new Date().getDay();
+    const getHours = new Date().getHours();
+    const getMinutes = new Date().getMinutes();
+    const getSeconds = new Date().getSeconds();
+    const getDatettt = new Date("August 19, 1975 23:15:30");
+
+    const setMonthName = monthNames[new Date().getMonth()].slice(0, 3);
+
+    // document.write(
+    //   setMonthName +
+    //     " " +
+    //     new Date().getDate() +
+    //     " " +
+    //     new Date().getHours() +
+    //     ":" +
+    //     new Date().getMinutes()
+    // );
+
+    const now = new Date();
+
+    const options = {
+      day: "numeric",
+      month: "short", // long & short & narrow, numeric,
+      year: "numeric", // 2-digit can show
+      hour: "numeric",
+      minute: "numeric",
+      weekday: "short", // long & short & narrow,
+    };
+
+    const userLocality = navigator.language;
+    const countryTime = Intl.DateTimeFormat(userLocality, options).format(now);
+
+    // Date methods end
+
+    // Set Time Out & Set Interval Methods Start
+
+    // const ingredients = ["Olive", "Spinach"];
+
+    // const orderPizza = setTimeout(
+    //   (ing1, ing2) => {
+    //     console.log(`Here is your pizza with ${ing1} and ${ing2}.`);
+    //   },
+    //   3000,
+    //   ...ingredients
+    // );
+
+    // console.log(orderPizza);
+
+    // if (ingredients.includes("spinach")) {
+    //   clearTimeout(orderPizza);
+    // }
+
+    // setInterval(function () {
+    //   const hour = new Date().getHours();
+    //   const minutes = new Date().getMinutes();
+    //   const seconds = new Date().getSeconds();
+    //   console.log(`${hour}:${minutes}:${seconds}`);
+    // }, 1000);
+
+    const start = document.querySelector(".start");
+    const pause = document.querySelector(".pause");
+    const restart = document.querySelector(".restart");
+    const watchTime = document.getElementById("watch");
+    const secondsClass = document.querySelector(".seconds");
+    const miliSecondsClass = document.querySelector(".miliseconds");
+    const minuteClass = document.querySelector(".minute");
+
+    let min = 0;
+    let sec = 0;
+    let milisec = 0;
+    let Interval;
+
+    start.addEventListener("click", function () {
+      Interval = setInterval(startTime, 10);
+    });
+
+    const startTime = function () {
+      miliSecondsClass.innerHTML = milisec++;
+      if (sec <= 9) {
+        secondsClass.innerHTML = "0" + sec;
+      }
+      if (sec > 9) {
+        secondsClass.innerHTML = sec;
+      }
+      if (min <= 9) {
+        minuteClass.innerHTML = "0" + min;
+      }
+      if (min > 9) {
+        minuteClass.innerHTML = min;
+      }
+
+      if (milisec > 99) {
+        sec++;
+        secondsClass.innerHTML = sec;
+        miliSecondsClass.innerHTML = "0" + 0;
+        milisec = 0;
+      }
+      if (sec > 59) {
+        min++;
+        minuteClass.innerHTML = min;
+        secondsClass.innerHTML = "0" + 0;
+        sec = 0;
+      }
+      start.style.display = "none";
+      pause.style.display = "inline-block";
+    };
+
+    restart.addEventListener("click", function () {
+      clearInterval(Interval);
+      secondsClass.innerHTML = "0" + 0;
+      miliSecondsClass.innerHTML = "0" + 0;
+      minuteClass.innerHTML = "0" + 0;
+      milisec = 0;
+      sec = 0;
+      min = 0;
+      start.style.display = "inline-block";
+      pause.style.display = "inline-block";
+    });
+
+    pause.addEventListener("click", function () {
+      clearInterval(Interval);
+      startTime();
+      start.style.display = "inline-block";
+      pause.style.display = "none";
+    });
   </script>
 </html>
-
-<!-- addSpace = words[i].split(".");
-        setSpace = addSpace[0] + "." + " " + addSpace[1];
-        document.write(setSpace + "</br>");
-        continue; -->
