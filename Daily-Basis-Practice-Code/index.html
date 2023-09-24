@@ -728,6 +728,8 @@
     //   console.log(`${hour}:${minutes}:${seconds}`);
     // }, 1000);
 
+    // Stop Watch Code Start
+
     const start = document.querySelector(".start");
     const pause = document.querySelector(".pause");
     const restart = document.querySelector(".restart");
@@ -794,5 +796,193 @@
       start.style.display = "inline-block";
       pause.style.display = "none";
     });
+
+    // Stop Watch Code Start
+
+    let arr = ["a", "b", "c", "d", "e"];
+    const letters = ["f", "g", "h", "i", "j", "k"];
+
+    // console.log(arr.slice(1, -2));
+
+    // Splice
+
+    // console.log(arr.splice(2));
+    // console.log(arr);
+    // arr.splice(1, 1);
+    // console.log(arr);
+
+    // Reverse
+    // console.log(arr.reverse(3, 1));
+    // console.log(arr);
+
+    // Concat
+    // console.log(arr.concat(letters));
+
+    // Join
+    // console.log(letters.join(' '));
+
+    // Filter
+    const productList = [
+      {
+        productName: "Clinic plus shampoo",
+        price: 300,
+      },
+      {
+        productName: "Head & Shoulder shampoo",
+        price: 90,
+      },
+      {
+        productName: "Sunslik shampoo",
+        price: 120,
+      },
+      {
+        productName: "Chick shampoo",
+        price: 100,
+      },
+    ];
+
+    const getSearchList = productList.filter(checkShampoo);
+
+    function checkShampoo(items, index) {
+      return typeof items === "string" ? items.productName : items.price;
+    }
+
+    // const numbers = [1, -1, -2, 2, 3];
+
+    // const getValue = numbers.filter(function (value) {
+    //   return value >= 0;
+    // });
+
+    // Find
+    // const arr1 = [9, 8, 12, 23, 67, 45];
+
+    // const findValue = arr1.find(value => value >= 18);
+
+    // console.log(findValue);
+
+    // Flat
+
+    // const arr2 = [1, 2, 3, 4, [3, [4, 5, 6], 7, 8, [9, [45]]]];
+
+    // console.log(arr2.flat());
+
+    // forEach
+    const arr1 = [10, 20, 30, 40, 50];
+    // for (let i = 0; i < arr2.length; i++) {
+    //   document.write(`<p>${i + 1} : ${arr2[i]}</p>`);
+    // }
+    // arr2.forEach((item, index) => document.write(`<p>${index + 1} ${item}</p>`));
+    // arr2.forEach(function (value, index, arr) {
+    //   console.log(value * 10);
+    // });
+
+    const caa = arr1.forEach(test1);
+
+    function test1(value) {
+      return value * 10;
+    }
+
+    // Map
+
+    const arr2 = [10, 20, 30, 40, 50];
+
+    const arrayOfObjects = [
+      {
+        fname: "Chandan",
+        lname: "Rathore",
+      },
+      {
+        fname: "Vishal",
+        lname: "Rathore",
+      },
+      {
+        fname: "Deepak",
+        lname: "Thakur",
+      },
+      {
+        fname: "Sahil",
+        lname: "Dhiman",
+      },
+    ];
+
+    const getUserFirstName = arrayOfObjects.map(returnName);
+
+    function returnName(getName) {
+      return getName.fname;
+    }
+
+    // getUserFirstName.map((names, index) => console.log(index + 1 + ' ' + names));
+
+    function fiveAndGreaterOnly(arr) {
+      return arr.length <= 5;
+    }
+    // test
+    var a = 10;
+    var b = 20;
+    var c = 30;
+
+    a = b;
+    b = c;
+    c = a;
+
+    const array = [
+      { id: 1, type: "user", balance: 100 },
+      { id: 2, type: "admin", isActive: false, balance: 200 },
+      { id: 3, type: "user", balance: 300 },
+      { id: 4, type: "admin", isActive: true, balance: 300 },
+      { id: 5, type: "user", balance: 300 },
+      { id: 6, type: "admin", isActive: true, balance: 600 },
+    ];
+
+    let getTotalValue = 0;
+
+    array.forEach((value) => {
+      if (value.type === "admin") {
+        getTotalValue += value.balance;
+      }
+    });
+
+    var array2 = [
+      {
+        id: 1,
+        name: "Rahul",
+        result: "",
+        totalMarks: 0,
+        subjects: { hindi: 60, math: 70, english: 68, history: 88 },
+      },
+      {
+        id: 2,
+        name: "Sahil",
+        result: "",
+        totalMarks: 0,
+        subjects: { hindi: 46, math: 70, english: 48, history: 84 },
+      },
+      {
+        id: 3,
+        name: "Sani",
+        result: "",
+        totalMarks: 0,
+        subjects: { hindi: 30, math: 30, english: 38, history: 28 },
+      },
+      {
+        id: 4,
+        name: "Karan",
+        result: "",
+        totalMarks: 0,
+        subjects: { hindi: 40, math: 72, english: 69, history: 48 },
+      },
+    ];
+
+    let getData = [];
+    let total = 0;
+
+    const getSubjects = array2
+      .map((getValues) => getValues.subjects)
+      .map((getStudentsMarks) => Object.values(getStudentsMarks))
+      .map((getPerticulaStudentValue, index) => {
+        console.log((getData = getPerticulaStudentValue));
+      });
+
+    console.log(getData);
   </script>
 </html>
